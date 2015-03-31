@@ -37,7 +37,7 @@ class ShopifyWrapper::Metafields < ShopifyWrapper
     %w(bunk_bed loft_bed standard_bed).each do |bed|
       name = "#{bed}_fields"
       product = ShopifyAPI::Product.where(handle: bed.dasherize).first
-      ShopifyWrapper::MetafieldGenerator.new(product: product, namespace: name, key_values: self.class.const_get(name.upcase)).create
+      ShopifyWrapper::MetafieldGenerator.new(product: product, namespace: "francis_lofts", key_values: self.class.const_get(name.upcase)).create
     end
   end
 
