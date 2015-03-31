@@ -1,9 +1,10 @@
 class ShopifyWrapper::MetafieldGenerator < ShopifyWrapper
 
-  attr_reader :key_values, :namespace, :value_type
+  attr_reader :product, :key_values, :namespace, :value_type
 
   def initialize(args = {})
     super
+    @product = args[:product]
     @namespace = args[:namespace]
     @key_values = args[:key_values]
     @value_type = args.fetch(:value_type, "string")
@@ -20,7 +21,11 @@ class ShopifyWrapper::MetafieldGenerator < ShopifyWrapper
     def create!(key, value)
       metafield = ShopifyAPI::Metafield.new
       metafield.attributes = { namespace: namespace, key: key, value: value, value_type: value_type }
-      metafield.save
+      if product
+        product.add_metafield(metafield)
+      else
+        metafield.save
+      end
     end
 
 end
