@@ -7,9 +7,9 @@ class PagesController < ApplicationController
     # raise "hello"
 
     # generate metafields
-    ShopifyWrapper::MetafieldGenerator::BUNK_BED_FIELDS.each do |k, v|
-      ShopifyWrapper::MetafieldGenerator.new(namespace: "bunk_bed_fields", key_values: { k => v }).create
-    end
+    # ShopifyWrapper::MetafieldGenerator::BUNK_BED_FIELDS.each do |k, v|
+    #   ShopifyWrapper::MetafieldGenerator.new(namespace: "bunk_bed_fields", key_values: { k => v }).create
+    # end
 
     raise "hello"
 
